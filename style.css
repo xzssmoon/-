@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 20% 30%, #ffd6de 0%, transparent 55%),
+        radial-gradient(circle at 80% 70%, #ffc4d0 0%, transparent 55%),
+        linear-gradient(135deg, #fff0f3 0%, #ffe0e6 50%, #ffd1d8 100%);
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Декоративные розы на фоне */
+body::before {
+    content: "🌹 🌸 🌹 🌷 🌹 🌺 🌹 🌸 🌹";
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    font-size: 40px;
+    opacity: 0.08;
+    line-height: 1.4;
+    padding: 20px;
+    pointer-events: none;
+    word-spacing: 60px;
+    z-index: 0;
+    animation: floatBackground 20s ease-in-out infinite;
+}
+
+body::after {
+    content: "🌸 🌹 🌷 🌺 🌹 🌸 🌹 🌺 🌷";
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    font-size: 40px;
+    opacity: 0.08;
+    line-height: 1.4;
+    padding: 20px;
+    pointer-events: none;
+    word-spacing: 60px;
+    z-index: 0;
+    animation: floatBackground 25s ease-in-out infinite reverse;
+}
+
+@keyframes floatBackground {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Летающие лепестки */
+.petals {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.7;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Карточка */
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+    width: 100%;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 150, 170, 0.5);
+    border-radius: 28px;
+    padding: 45px 35px;
+    text-align: center;
+    box-shadow:
+        0 20px 60px rgba(255, 100, 130, 0.25),
+        0 0 80px rgba(255, 180, 200, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    animation: cardIn 1s ease-out;
+}
+
+@keyframes cardIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+h1 {
+    font-size: 38px;
+    background: linear-gradient(135deg, #d63384, #ff5c8d, #d63384);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shine 4s linear infinite;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
+.subtitle {
+    color: #b85c7a;
+    font-size: 15px;
+    font-style: italic;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.heart {
+    font-size: 60px;
+    margin: 15px 0 25px;
+    animation: beat 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 100, 130, 0.6));
+}
+
+@keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.message {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #6b3a4a;
+    margin-bottom: 20px;
+}
+
+.roses-row {
+    margin: 25px 0;
+    font-size: 28px;
+    letter-spacing: 10px;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+.signature {
+    font-size: 16px;
+    color: #b85c7a;
+    font-style: italic;
+    margin: 25px 0;
+    line-height: 1.7;
+}
+
+.btn {
+    margin-top: 15px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #ff6b8a, #ff8fa8, #ff6b8a);
+    background-size: 200% auto;
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Georgia', serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 30px rgba(255, 100, 130, 0.4);
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(255, 100, 130, 0.6);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.hidden-message {
+    margin-top: 25px;
+    font-size: 17px;
+    color: #d63384;
+    font-style: italic;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.6s ease;
+    line-height: 1.7;
+}
+
+.hidden-message.show {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 2px dashed rgba(255, 150, 170, 0.5);
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 30px; }
+    .card { padding: 35px 25px; }
+    .heart { font-size: 50px; }
+    .message { font-size: 15.5px; }
+    .roses-row { font-size: 22px; letter-spacing: 6px; }
+}
